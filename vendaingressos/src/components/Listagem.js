@@ -67,7 +67,6 @@ function Listagem(props){
                 <TitlePane>{props.name}</TitlePane>
                 <PricePane>{props.price}</PricePane>
                 <hr/>
-                <Detalhes>{props.descricao}</Detalhes>
                 <Link to={`/ingresso/${props.id}`}>
                     <BotaoComprar>Comprar</BotaoComprar>
                 </Link>
