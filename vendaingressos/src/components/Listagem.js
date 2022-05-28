@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import img from '../logo.png';
@@ -65,7 +65,7 @@ function Listagem(props){
             <ItemContainer>
                 <Thumbnail src={img} />
                 <TitlePane>{props.name}</TitlePane>
-                <PricePane>{props.price}</PricePane>
+                <PricePane>{props.descricao}</PricePane>
                 <hr/>
                 <Link to={`/ingresso/${props.id}`}>
                     <BotaoComprar>Comprar</BotaoComprar>

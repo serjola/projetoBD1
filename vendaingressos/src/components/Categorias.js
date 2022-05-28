@@ -6,6 +6,7 @@ import img  from '../fundoimg2.jpg';
 import ContainerIngressos from './ContainerIngressos';
 import NavHeader from './Navbar';
 import { Navbar } from 'react-bootstrap';
+import ListaCategorias from './listaCategorias';
 
 const StyledSection = styled.section`
 height: 2000px;
@@ -24,15 +25,15 @@ const Texto = styled.div`
     color: #fff;   
 `;
 
-function Main(){
+function Categorias(){
 
     return(
         <StyledSection >   
             
             <NavHeader/>
-            <Texto>Garanta aqui o seu ingresso para os melhores shows</Texto>
-            <ContainerIngressos/>
+            <Texto>Gerenciamento de Categorias</Texto>
+            <ListaCategorias/>
         </StyledSection>
     )
 }
-export default Main;
+export default Categorias;

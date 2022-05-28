@@ -9,6 +9,20 @@ import { Container, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import img from '../logo.png';
 
+const handleClick = () => {
+    $.ajax({
+        url: 'http://localhost:4002/',
+        type: 'GET',
+        contentType: "application/json",
+        success: function (result) {
+            console.log(result);
+          },
+          error: function (result, status) {
+            console.log(result);
+          }
+    })
+  }
+
 const Thumbnail = styled.img`
     height: 100%;
     border: 0;
@@ -71,6 +85,7 @@ const BotaoComprar = styled.button`
     border-color: #FF9933;  
              
 `;
+
 
 const TituloProduto = styled.div`
     font-size: 1.5rem;  font-weight: bold;
@@ -140,7 +155,7 @@ const Produto = () => {
         
 
                 <Divpreco> {"R$"+(produto.preco)+",00"}</Divpreco>
-                <BotaoComprar>Comprar</BotaoComprar> 
+                <BotaoComprar onClick={handleClick}>Comprar</BotaoComprar> 
             </Col>
         </Row>
 

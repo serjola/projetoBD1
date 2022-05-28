@@ -2,9 +2,8 @@ import Listagem from './Listagem';
 import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
 import {Ingressos} from '../Ingressos';
-import { useEffect, useState } from 'react';
-import { Router, Route, Link, browserHistory } from 'react-router';
- 
+import React,{ useEffect, useState } from 'react';
+import {ListarCategoria, ListarEventos} from '../requisicoes'; 
 const ListContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -16,8 +15,9 @@ const ListContainer = styled.div`
 `;
 
 
- 
+
 function ContainerIngressos() {
+
     const [ingressos, setIngressos] = useState([]);
 
     useEffect(() => {
@@ -33,9 +33,8 @@ function ContainerIngressos() {
                 <Listagem 
                 key={ingresso.id}
                 id={ingresso.id}
-                name={ingresso.nome}  
-                price = {ingresso.preco}
-                descricao = {ingresso.descricao}
+                name={ingresso.titulo}  
+                price = {ingresso.price}
                 />
              )
           })}

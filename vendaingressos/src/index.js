@@ -8,6 +8,7 @@ import NavHeader from './components/Navbar';
 import Main from './components/Main';
 import Routes from './Routes';
 import ContainerIngressos from './components/ContainerIngressos';
+import {listar} from './requisicoes';
 
 ReactDOM.render(
   <React.StrictMode>
