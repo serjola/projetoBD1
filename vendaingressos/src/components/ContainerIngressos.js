@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
 import {Ingressos} from '../Ingressos';
 import React,{ useEffect, useState } from 'react';
-import {ListarCategoria, ListarEventos} from '../requisicoes'; 
+
 const ListContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -14,9 +14,12 @@ const ListContainer = styled.div`
   align-items: center;
 `;
 
-
-
 function ContainerIngressos() {
+
+    const requisicoes = require('../Requisicoes');
+
+    var json_obj = JSON.parse(requisicoes.ListarCategoria("http://localhost:4002/evento"));
+
 
     const [ingressos, setIngressos] = useState([]);
 
@@ -27,14 +30,14 @@ function ContainerIngressos() {
   return (
     <Container>
       <ListContainer>
-          {ingressos.map(ingresso => {
+          {json_obj.map(ingresso => {
               return(
                 
                 <Listagem 
                 key={ingresso.id}
                 id={ingresso.id}
                 name={ingresso.titulo}  
-                price = {ingresso.price}
+                descricao = {ingresso.descricao}
                 />
              )
           })}

@@ -1,12 +1,11 @@
 import React from 'react';  
-import ReactDOM from 'react-dom';   
-import '../style/main.css';       
+import ReactDOM from 'react-dom';        
 import styled from 'styled-components'
-import img  from '../fundoimg2.jpg';
-import ContainerIngressos from './ContainerIngressos';
-import NavHeader from './Navbar';
+import img  from '../../fundoimg2.jpg';
+import ContainerIngressos from '../ContainerIngressos';
+import NavHeader from '../Navbar';
 import { Navbar } from 'react-bootstrap';
-import ListaCategorias from './listaCategorias';
+import ListaCategorias from './ContainerCategorias';
 
 const StyledSection = styled.section`
 height: 2000px;

@@ -41,24 +41,50 @@ const adicionaEvento = (request, response) => {
   }
 
 const atualizaEvento = (request, response) => {
-    const id = parseInt(request.params.id)
+  const id = parseInt(request.params.id)
+  var titulo = request.body.titulo;
+  var descricao = request.body.descricao;
+
+  if(descricao == "" && titulo !== ""){
     pool.query (`
 
-    UPDATE hospital.medico 
-    SET  cpf=$1 WHERE id = $2`, [cpf,id], (error, results) => {
+    UPDATE vendaingresso.evento
+    SET  titulo=$1 WHERE id = $2`, [titulo,id], (error, results) => {
       if (error) {
         throw error
       }
       response.status(200).json(results.rows)
     })
+  }else if(descricao !== "" && titulo === ""){
+    pool.query (`
+
+    UPDATE vendaingresso.evento
+    SET  descricao=$1 WHERE id = $2`, [descricao,id], (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
+  }else if(descricao !== "" && titulo !== ""){
+    pool.query (`
+
+    UPDATE vendaingresso.evento
+    SET  descricao=$1 WHERE id = $2`, [descricao,id], (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
+  }
+
 }
 
 const excluiEvento = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query (`
 
-    DELETE FROM hospital.medico 
-    WHERE  cpf=$1`, [id], (error, results) => {
+    DELETE FROM vendaingresso.evento 
+    WHERE  id=$1`, [id], (error, results) => {
       if (error) {
         throw error
       }
@@ -104,10 +130,12 @@ const adicionaCategoria = (req, res) => {
 
 const atualizaCategoria = (request, response) => {
   const id = parseInt(request.params.id)
+  var nome = request.body.nome;
+
   pool.query (`
 
-  UPDATE hospital.medico 
-  SET  cpf=$1 WHERE id = $2`, [cpf,id], (error, results) => {
+  UPDATE vendaingresso.categoria
+  SET  primeironome=$1 WHERE id = $2`, [nome,id], (error, results) => {
     if (error) {
       throw error
     }

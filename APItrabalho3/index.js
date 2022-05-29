@@ -19,7 +19,7 @@ app.delete('/evento/delete/:id',operacoes.excluiEvento)
 
 app.get('/categoria',operacoes.getCategorias)
 app.post('/categoria/cria',operacoes.adicionaCategoria)
-app.put('/categoria/atualiza/:id',operacoes.atualizaEvento)
+app.put('/categoria/atualiza/:id',operacoes.atualizaCategoria)
 app.delete('/categoria/delete/:id',operacoes.excluiCategoria)
 
 

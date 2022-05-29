@@ -43,7 +43,7 @@ const ItemLink = styled.div`
 `;
 
 const BotaoComprar = styled.button`
-    background-color: #FF9933;
+    background-color: #0099ff;
     border-radius: 4px;
     text-align: center; 
     align-items: center; 
@@ -53,6 +53,7 @@ const BotaoComprar = styled.button`
     margin-top: 5%;
     width: 90%;
     hover: #0066cc;
+    text-decoration: none;
              
 `;
 const Detalhes = styled.div`
@@ -61,13 +62,13 @@ const Detalhes = styled.div`
 
 function Listagem(props){
     return (
-        <ItemLink href="https://www.luiztools.com.br/livro-nodejs-amazon" title="Clique para comprar">
+        <ItemLink>
             <ItemContainer>
                 <Thumbnail src={img} />
                 <TitlePane>{props.name}</TitlePane>
                 <PricePane>{props.descricao}</PricePane>
                 <hr/>
-                <Link to={`/ingresso/${props.id}`}>
+                <Link to={`/ingresso/${props.id}`} style={{ textDecoration: 'none' }}>
                     <BotaoComprar>Comprar</BotaoComprar>
                 </Link>
             </ItemContainer>

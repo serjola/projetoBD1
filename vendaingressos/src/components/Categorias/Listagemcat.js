@@ -1,10 +1,10 @@
 import React, {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import img from '../logo.png';
 import { faTrashCan, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Modal } from 'react-bootstrap';
+import ModalEdita from '../uteis/ModalEditaCategoria';
 
 const ItemContainer = styled.div`
     border-radius: 4px;
@@ -13,11 +13,13 @@ const ItemContainer = styled.div`
     width: 1500px;
     color: #29303b;
     margin-bottom: 10px;
+    margin-top: 10px;
     margin-right: 10px;
     padding: 10px;
     flex-direction: row;
     display:inline-block;
 `;
+
  
 const Thumbnail = styled.img`
     height: 50%;
@@ -70,14 +72,6 @@ display:inline-block;
 `
 
 
-
-function Delete(yourUrl){
-    var Httpreq = new XMLHttpRequest(); // a new request
-    Httpreq.open("DELETE",yourUrl,false);
-    Httpreq.send(null);
-    return Httpreq.responseText;          
-  }  
-
 function Listagemcat(props){
 
     const handleSubmit = () => {
@@ -95,7 +89,7 @@ function Listagemcat(props){
                 <TitlePane>{props.id}</TitlePane>
                 <TitlePane>{props.name}</TitlePane>
                 <Acoes>
-                <a href={'https://localhost:3000'}><FontAwesomeIcon icon={faPenToSquare} /></a>
+                <ModalEdita id = {props.id}/>
                 <Button onClick={handleSubmit}><FontAwesomeIcon icon={faTrashCan}/></Button>
                 </Acoes>
                 <PricePane>{props.sobrenome}</PricePane>

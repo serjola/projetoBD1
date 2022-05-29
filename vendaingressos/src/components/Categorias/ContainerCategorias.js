@@ -1,13 +1,13 @@
 import Listagemcat from './Listagemcat';
 import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
-import {Ingressos} from '../Ingressos';
+import {Ingressos} from '../../Ingressos';
 import React,{ useEffect, useState } from 'react';
-import {ListarCategoria, ListarEventos} from '../requisicoes';
+import {ListarCategoria} from '../../Requisicoes';
 
-import Listagem from './Listagem';
+import Listagem from '../Listagem';
 import { Button, Modal } from 'react-bootstrap';
-import Modalz from './Modal';
+import Modalz from '../uteis/ModalCriaCategoria';
 
  
 const ListContainer = styled.div`
@@ -20,18 +20,13 @@ const ListContainer = styled.div`
   align-items: center;
 `;
 
-function Get(yourUrl){
-  var Httpreq = new XMLHttpRequest(); // a new request
-  Httpreq.open("GET",yourUrl,false);
-  Httpreq.send(null);
-  return Httpreq.responseText;          
-}
 
 
 function ListaCategorias() {
 
-  var json_obj = JSON.parse(Get("http://localhost:4002/categoria"));
-  console.log(json_obj)
+  const requisicoes = require('../../Requisicoes');
+
+  var json_obj = JSON.parse(requisicoes.ListarCategoria("http://localhost:4002/categoria"));
 
   
 
@@ -41,7 +36,7 @@ function ListaCategorias() {
       
       <ListContainer>
           <Modalz/>
-
+          
           {json_obj.map(categoria => {
               return(
                     <Listagemcat key={categoria.id}  id={categoria.id} name={categoria.primeironome} sobrenome={categoria.sobrenome}/>

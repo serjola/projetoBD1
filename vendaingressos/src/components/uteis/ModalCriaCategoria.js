@@ -1,14 +1,14 @@
-import Listagemcat from './Listagemcat';
+import Listagemcat from '../Categorias/Listagemcat';
 import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
-import {Ingressos} from '../Ingressos';
+import {Ingressos} from '../../Ingressos';
 import React,{ useEffect, useState } from 'react';
-import {ListarCategoria, ListarEventos,  CriarCategoria} from '../requisicoes';
+import {ListarCategoria, ListarEventos,  CriarCategoria} from '../../Requisicoes';
 
-import Listagem from './Listagem';
+import Listagem from '../Listagem';
 import { Button, Modal } from 'react-bootstrap';
 
-const requisits = require('../requisicoes');
+const requisits = require('../../Requisicoes');
 export default function Modalz() {
     const [show, setShow] = useState(false);
 
@@ -44,7 +44,7 @@ export default function Modalz() {
               Close
             </Button>
             <Button variant="primary" onClick= {handleSubmit} >
-              Save Changes
+              Adicionar Categoria
             </Button>
           </Modal.Footer>
         </Modal>

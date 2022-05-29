@@ -19,22 +19,11 @@ export function ListarEventos(){
 }
 
 
-export function ListarCategoria(){
-    let resposta
-    $.ajax({
-        url: "http://localhost:4002/categoria",
-        type: "GET",
-        dataType: 'json',
-        contentType: "application/json",
-        success: function (result) {
-            console.log(result)
-        },
-        error: function (result, status) {
-            return result
-        }
-    });
-    console.log(resposta)
-    return resposta
+export function ListarCategoria(yourUrl){
+    var Httpreq = new XMLHttpRequest();
+    Httpreq.open("GET",yourUrl,false);
+    Httpreq.send(null);
+    return Httpreq.responseText; 
 }
 
 
