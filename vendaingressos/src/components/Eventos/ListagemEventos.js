@@ -99,8 +99,8 @@ function ListagemEventos(props){
                 <DescricaoPane>{props.descricao}</DescricaoPane>
                 <DescricaoPane>{props.datas}</DescricaoPane>
                 <Acoes>
-                <ModalEditaEvento id = {props.id}/>
-                <Button onClick={handleSubmit}><FontAwesomeIcon icon={faTrashCan}/></Button>
+                <ModalEditaEvento id ={props.id}/>
+                <Button  onClick={handleSubmit}><FontAwesomeIcon icon={faTrashCan}/></Button>
                 </Acoes>
                 <PricePane>{props.sobrenome}</PricePane>
                 

@@ -18,7 +18,7 @@ function ContainerIngressos() {
 
     const requisicoes = require('../Requisicoes');
 
-    var json_obj = JSON.parse(requisicoes.ListarCategoria("http://localhost:4002/evento"));
+    var json_obj = JSON.parse(requisicoes.Listar("http://localhost:4002/evento"));
 
 
     const [ingressos, setIngressos] = useState([]);

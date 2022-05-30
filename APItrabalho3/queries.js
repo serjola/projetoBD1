@@ -17,22 +17,15 @@ const getEventos = (request, response) => {
     })
   }
 
-const getEventobyID = (request, response) => {
-    const id = parseInt(request.params.id)
-
-    pool.query('SELECT * FROM hospital.medico WHERE cpf = $1 ',[id], (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).json(results.rows)
-    })
-  }
 
 const adicionaEvento = (request, response) => {
-    console.log(request.body)
+    const id = parseInt(request.body.id)
+    const titulo = request.body.titulo
+    const descricao = request.body.descricao
+    const datas = request.body.data
     pool.query(`
      INSERT INTO vendaingresso.evento 
-     (cpf,idregistro,numcrm,especialidade,salario) VALUES ($1, $2, $3, $4, $5) `,[cpf,idregistro,numcrm,especialidade,salario], (error, results) => {
+     (id,titulo,descricao,datas) VALUES ($1, $2, $3, $4) `,[id,titulo,descricao,datas], (error, results) => {
       if (error) {
         throw error
       }
@@ -69,7 +62,7 @@ const atualizaEvento = (request, response) => {
     pool.query (`
 
     UPDATE vendaingresso.evento
-    SET  descricao=$1 WHERE id = $2`, [descricao,id], (error, results) => {
+    SET  descricao=$1 , titulo=$2 WHERE id = $3`, [descricao,titulo,id], (error, results) => {
       if (error) {
         throw error
       }
@@ -104,16 +97,6 @@ const getCategorias = (request, response) => {
 
 }
 
-const getCategoria = (request, response) => {
-  const id = parseInt(request.params.id)
-
-  pool.query('SELECT * FROM hospital.medico WHERE cpf = $1 ',[id], (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).json(results.rows)
-  })
-}
 
 const adicionaCategoria = (req, res) => {
   var id = req.body.id;
@@ -158,12 +141,10 @@ const excluiCategoria = (request, response) => {
 
   module.exports ={
       getEventos,
-      getEventobyID,
       adicionaEvento,
       atualizaEvento,
       excluiEvento,
       getCategorias,
-      getCategoria,
       adicionaCategoria,
       atualizaCategoria,
       excluiCategoria

@@ -26,7 +26,7 @@ function ListaCategorias() {
 
   const requisicoes = require('../../Requisicoes');
 
-  var json_obj = JSON.parse(requisicoes.ListarCategoria("http://localhost:4002/categoria"));
+  var json_obj = JSON.parse(requisicoes.Listar("http://localhost:4002/categoria"));
 
   
 

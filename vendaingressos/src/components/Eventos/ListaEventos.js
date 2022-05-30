@@ -3,11 +3,10 @@ import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
 import {Ingressos} from '../../Ingressos';
 import React,{ useEffect, useState } from 'react';
-import {ListarCategoria} from '../../Requisicoes';
 
 import Listagem from '../Listagem';
 import { Button, Modal } from 'react-bootstrap';
-import Modalz from '../uteis/ModalCriaCategoria';
+import ModalCriaEvento from '../uteis/ModalCriaEvento';
 
  
 const ListContainer = styled.div`
@@ -26,7 +25,7 @@ function ListaEventos() {
 
   const requisicoes = require('../../Requisicoes');
 
-  var json_obj = JSON.parse(requisicoes.ListarCategoria("http://localhost:4002/evento"));
+  var json_obj = JSON.parse(requisicoes.Listar("http://localhost:4002/evento"));
 
   
 
@@ -35,7 +34,7 @@ function ListaEventos() {
     <Container>
       
       <ListContainer>
-          <Modalz/>
+          <ModalCriaEvento/>
           
           {json_obj.map(evento => {
               var datas = evento.datas.map(data => {
